@@ -70,8 +70,8 @@ export default class ApiCaller extends Component {
 		axios
 			.delete(url, {
 				headers: {
-					'Content-Type': 'application/json'
-					// Authorization: sessionStorage.sessionToken
+					'Content-Type': 'application/json',
+					 Authorization: sessionStorage.sessionToken
 				}
 			})
 			.then((res) => {

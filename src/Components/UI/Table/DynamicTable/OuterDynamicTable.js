@@ -13,8 +13,8 @@ export default class OuterDynamicTable extends Component {
 		});
 
 		const generateRow = (item, index, tHeaders) => {
-			console.log(item.estado);
-			console.log(item[dataSelector]);
+			// console.log(item.estado);
+			// console.log(item[dataSelector]);
 
 			const { _id, estado, year } = item;
 			const id = _id;
