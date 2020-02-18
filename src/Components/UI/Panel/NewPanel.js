@@ -12,6 +12,8 @@ class NewPanel extends Component{
 	constructor(props){
 		super(props);
 		this.name = props.name;
+		console.log("props")
+		console.log(props);
 	}
 	
 	componentDidMount(){
@@ -28,42 +30,46 @@ class NewPanel extends Component{
 	mapNestedForms = (forms) => {
 		const mappedForms = forms.map((form) => {
 			const { name, type, stateKey } = form;
+			console.log(this.props.data);
 			if(type == "checkbox"){
-				return(
-					<Col md={1}>
-						<Form.Group >
-							<Form.Label>{form.name}</Form.Label>
-							<Checkbox 
-								onChange={(e) => {
-									if(this.props.data[name] == true){
-										this.props.data[name] = false
-									}else{
-										this.props.data[name] = true;
-									}
-									this.props.handleCheckboxChange(e, stateKey);
-								}}
-								checked={this.props.data[name]}
-								name={name}
-								placeholder={name}
-								type={type}
-							/>
-						</Form.Group>
-					</Col>
+				if(this.props.data.length != 0){ // Si no tiene data es por que es nuevo
+					return(
+						<Col md={1}>
+							<Form.Group >
+								<Form.Label>{form.name}</Form.Label>
+								<Checkbox 
+									onChange={(e) => {
+										if(this.props.data[name] == true){
+											this.props.data[name] = false
+										}else{
+											this.props.data[name] = true;
+										}
+										this.props.handleCheckboxChange(e, stateKey);
+									}}
+									checked={this.props.data[name]}
+									name={name}
+									placeholder={name}
+									type={type}
+									/>
+							</Form.Group>
+						</Col>
+					);
+				}
+			}else{
+				return (
+					
+						<TextForm
+							// onChange={this.handleInputChange}
+							onChange={(e) => this.props.handleInputChange(e, stateKey)}
+							value={this.props.data[name]}
+							name={name}
+							placeholder={name}
+							type={type}
+							label={form.name}
+						/>
+					
 				);
 			}
-			return (
-				
-					<TextForm
-						// onChange={this.handleInputChange}
-						onChange={(e) => this.props.handleInputChange(e, stateKey)}
-						value={this.props.data[name]}
-						name={name}
-						placeholder={name}
-						type={type}
-						label={form.name}
-					/>
-				
-			);
 		});
 		return mappedForms;
 	};
