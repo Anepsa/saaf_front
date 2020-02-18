@@ -37,6 +37,19 @@ class Regular extends Component {
 		console.log(this.state.data);
 	};
 
+	handleCheckboxChange = (e) => {
+		const data = { ...this.state.data };
+		let estado = data["estado"];
+		if (estado) {
+			estado = false;
+		} else {
+			estado = true;
+		}
+		data["estado"] = estado; //Assigns the Specific Key's value = to the input's value
+		this.setState({ data: data }); //Sets State to New User Data
+		console.log(this.state.data);
+	};
+
 	handleInputRender = (e) => {
 		this.setState({ data: e }); //Sets State to New User Data
 		console.log(this.state.data);
@@ -47,6 +60,7 @@ class Regular extends Component {
 			data: this.state,
 			apiSubmit: this.apiPost,
 			handleInputChange: this.handleInputChange,
+			handleCheckboxChange: this.handleCheckboxChange,
 			handleInputRender: this.handleInputRender,
 		});
 		// return this.props.render([this.state, this.apiPut]);

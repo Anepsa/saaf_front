@@ -31,6 +31,14 @@ export const nestedForms = [
     stateKey: "datos",
     isNested: true, // Need to optimize in WithForms,
     field: "campoempleado"
+  },
+  {
+    name: "estado",
+    type: "checkbox",
+    longName: "Apellido",
+    stateKey: "datos",
+    isNested: true, // Need to optimize in WithForms,
+    field: "campoempleado"
   }
 ];
 

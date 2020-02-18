@@ -24,6 +24,7 @@ export default function AddCompany(props) {
 						<NewPanel
 							apiSubmit={properties.apiSubmit}
 							handleInputChange={properties.handleInputChange} // Nested or Regular
+							handleCheckboxChange={properties.handleCheckboxChange} 
 							handleInputRender={properties.handleInputRender} 
 							forms={localData.nestedForms}
 							name="Agregar Compañía"

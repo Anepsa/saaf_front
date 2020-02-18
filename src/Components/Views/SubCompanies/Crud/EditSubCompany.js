@@ -25,6 +25,7 @@ export default function EditSubCompany(props) {
 						<NewPanel
 							apiSubmit={properties.apiPut}
 							handleInputChange={properties.handleInputChange} // Nested or Regular
+							handleCheckboxChange={properties.handleCheckboxChange} // Nested or Regular
 							handleInputRender={properties.handleInputRender} 
 							forms={localData.nestedForms}
 							name="Editar Empresa"

@@ -9,9 +9,10 @@ export default function AddSubCompany(props) {
 	const postPath = `https://murmuring-journey-73788.herokuapp.com/empresa/${idCompany}`;
 	return (
 		<Regular
-			postPath={postPath}
-			field="company"
-			render={(properties) => {
+		postPath={postPath}
+		field="company"
+		render={(properties) => {
+			console.log(properties)
 				if (properties.data.loading) return <img id="loading-spinner" src="/loading.svg" alt="" />;
 				return (
 					<Provider
@@ -22,6 +23,7 @@ export default function AddSubCompany(props) {
 						<NewPanel
 							apiSubmit={properties.apiSubmit}
 							handleInputChange={properties.handleInputChange} // Nested or Regular
+							handleCheckboxChange={properties.handleCheckboxChange}
 							handleInputRender={properties.handleInputRender}
 							forms={localData.nestedForms}
 							name="Agregar Empresa"

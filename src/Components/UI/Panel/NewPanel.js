@@ -1,9 +1,11 @@
 import  React , { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Form, Container, Row, Col } from 'react-bootstrap';
 import { Consumer } from '../../../Context/Context';
 import CancelButton from '../Buttons/CancelButton';
 import SubmitButton from '../Buttons/SubmitButton';
 import { TextForm } from './TextForm';
+// import Checkbox from 'react-icheck/lib/Checkbox';
+import Checkbox from '@material-ui/core/Checkbox';
 class NewPanel extends Component{
 	name;
 	
@@ -13,20 +15,42 @@ class NewPanel extends Component{
 	}
 	
 	componentDidMount(){
-		// console.log("componentDidMount");
-		let data = {};
-		this.props.forms.map((form) => {
-			const stateTarget = [form.name];// Obtener el nombre del campo json
-			data[stateTarget] = this.props.data[form.name]; // A ese campo agregar su valor
-		});
-		this.props.handleInputRender(data);
+		if(this.props.handleInputRender != undefined ){
+			let data = {};
+			this.props.forms.map((form) => {
+				const stateTarget = [form.name];// Obtener el nombre del campo json
+				data[stateTarget] = this.props.data[form.name]; // A ese campo agregar su valor
+			});
+			this.props.handleInputRender(data);
+		}
 	}
 
 	mapNestedForms = (forms) => {
-		// console.log(this.props.data)
 		const mappedForms = forms.map((form) => {
 			const { name, type, stateKey } = form;
-
+			if(type == "checkbox"){
+				return(
+					<Col md={1}>
+						<Form.Group >
+							<Form.Label>{form.name}</Form.Label>
+							<Checkbox 
+								onChange={(e) => {
+									if(this.props.data[name] == true){
+										this.props.data[name] = false
+									}else{
+										this.props.data[name] = true;
+									}
+									this.props.handleCheckboxChange(e, stateKey);
+								}}
+								checked={this.props.data[name]}
+								name={name}
+								placeholder={name}
+								type={type}
+							/>
+						</Form.Group>
+					</Col>
+				);
+			}
 			return (
 				
 					<TextForm
