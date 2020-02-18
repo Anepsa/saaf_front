@@ -1,0 +1,9 @@
+.nav-user{
+    /* margin-right: 125px; */
+    text-transform: capitalize;
+}
+
+
+.brand-logo {
+    z-index: 999;
+}

@@ -1,0 +1,269 @@
+     // axios({
+      //   method: method,
+      //   url: url,
+      //   headers: headers
+      // })
+      // .then(res => {
+      //   console.log(res.data);
+      //   const datos = res.data.proyecto;
+      //   // const notificationMsg = res.data.mensaje
+      //   this.setState({ data: datos });
+      //   NotificationManager.success("Éxito");
+
+      // })
+
+      // .catch(error => {
+      //   console.log(error);
+      //   NotificationManager.error("Error");
+      // });
+
+
+
+          mapDepreciationForms = forms => {
+      const mappedForms = forms.map(form => {
+        const { name, type, stateKey, isDropdown } = form;
+        if (isDropdown) {
+          return (
+            <Col>
+              <DropdownForm
+                onChange={this.handleInputChange}
+                // onChange={e => this.handleNestedInputChange(e, stateKey)}
+                value={this.state.datos}
+                name={name}
+                placeholder={name}
+                type={type}
+                label={form.name}
+              />
+            </Col>
+          );
+        } else {
+          return (
+            <Col>
+              <TextForm
+                onChange={this.handleInputChange}
+                // onChange={e => this.handleNestedInputChange(e, stateKey)}
+                value={this.state.datos}
+                name={name}
+                placeholder={name}
+                type={type}
+                label={form.name}
+              />
+            </Col>
+          );
+        }
+      });
+      return mappedForms;
+    };
+
+
+
+
+/// old API REQUEST 
+
+   // let respuesta = await axios({
+      //   method: method,
+      //   url: url,
+      //   headers: headers,
+      //   data: JSON.stringify(data)
+      // });
+
+
+
+
+
+=======================NEED TO ABSTRACT DROPDWOWN LOGIC FROM FORM MAPPER =================================================
+
+
+
+          <Col>
+              <DropdownForm //Props Below can be Abstracted using ...rest or Render props
+                onChange={this.handleInputChange}
+                value={dataName}
+                name={name}
+                placeholder={name}
+                type={type}
+                label={form.name}
+              />
+            </Col>
+
+
+
+
+
+
+
+
+
+
+
+
+================================WITH FORMS HOC==================
+    // external function that returns  mapped Forms will not be in HOC
+
+    // handleInputChange = e => {
+    //   console.log(e.target.value);
+    //   // Updates Nested State (Inmutably) using input's Name and Value
+    //   const data = { ...this.state.data };
+    //   const stateTarget = [e.target.name]; //Input's Name Identifier
+    //   data[stateTarget] = e.target.value; //Assigns the Specific Key's value = to the input's value
+    //   this.setState({ data: data }); //Sets State to New User Data
+    //   console.log(this.state.data);
+    // };
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    // apiPut = async (url, data) => {
+    //   console.log(url);
+    //   JSON.stringify(data);
+    //   const res = await axios.put((url, { data }));
+    //   console.log(res.data)
+    // };
+
+
+     // console.log(itemData);
+      // const res = await axios.put(
+      //   url,
+      //   { data: itemData },
+      //   { headers: { "Content-Type": "application/json" } }
+      // );
+      // console.log(res.data);
+
+}
+
+
+
+// deactivate buutton scrapping 
+
+  // const deactivate = () => {
+  //   props.deactFunc(props.deactLink, props.itemData);
+  //   props.apiGet();
+  // };
+
+
+  // const deactivate = async () => {
+  //   await console.log("comleted");
+  //   props.apiPut(props.deactLink, props.itemData);
+
+  //   // await props.deactFunc(props.deactLink, props.itemData);
+  //   // await console.log("completed");
+  // };
+
+
+
+
+
+  ==============================Submit Button Scrap =)=?==========================================
+   const history = props.history;
+  function submit() {
+    // Hacer con Async y Await
+    let promise = new Promise(resolve => {
+      resolve(props.clicked());
+    }).then(() => {
+      history.goBack();
+    });
+
+    return promise;
+  }
+
+
+
+  Hacer Data en formato JSON para envió de request de API = Immutable State change 
+  Map forms depending on isNested Property use => handleInputChange or handleNestedInputChange
+
+
+
+
+    
+	transformData = (data, targetKey) => {
+		const transformedData = { [targetKey]: data };
+		// console.log(transformedData);
+		return transformedData;
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Consumer } from '../../../Context/Context';
+import CancelButton from '../Buttons/CancelButton';
+import SubmitButton from '../Buttons/SubmitButton';
+import { TextForm } from './TextForm';
+const NewPanel = (props) => {
+	const { name, handleInputChange, handleNestedInputChange } = props;
+	const mapNestedForms = (forms) => {
+		const mappedForms = forms.map((form) => {
+			const { name, type, stateKey, isNested } = form;
+			const inputHanlder = isNested ? handleNestedInputChange : handleInputChange;
+			return (
+			
+					<TextForm
+						// onChange={this.handleInputChange}
+						onChange={(e) => inputHanlder(e, stateKey)}
+						value={props.data[name]}
+						name={name}
+						placeholder={name}
+						type={type}
+						label={form.name}
+					/>
+			
+			);
+		});
+		return mappedForms;
+	};
+	// Changed apiPut to apiSubmit on line 51
+	return (
+		<Container fluid className="mainPanel animated fadeIn">
+			<Consumer>
+				{(context) => (
+					<div className="panelContainer">
+						<Row>
+							<Col>
+								<h5>{name}</h5>
+							</Col>
+						</Row>
+						<hr />
+						<Row>
+							{mapNestedForms(props.forms)}
+						</Row>
+						<Row>
+							<Col lg={12}>{props.children}</Col>
+						</Row>
+						<Row className="float-right">
+							<Col>
+								<CancelButton />
+								<SubmitButton clicked={context.apiSubmit} />
+							</Col>
+						</Row>
+					</div>
+				)}
+			</Consumer>
+		</Container>
+	);
+};
+export default NewPanel;

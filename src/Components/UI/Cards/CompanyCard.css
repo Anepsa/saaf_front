@@ -1,0 +1,67 @@
+.companyCard {
+  width: 100%;
+  /* min-height: 900px; */
+  min-width: 300px;
+  margin: 20px 0;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.companyCard:hover {
+  background-color: rgb(235, 235, 235);
+}
+.cardTitle {
+  transition: all 0.2s;
+  font-weight: 800;
+}
+.companyCard:hover .cardTitle {
+  transform: scale(1.1);
+}
+
+.cardCircle {
+  background: #32c5d2;
+  border-radius: 50%;
+  color: #fff;
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  -webkit-transform: translate(-50%, -40%);
+  -ms-transform: translate(-50%, -40%);
+  transform: translate(-50%, -40%);
+}
+
+.cardInfo {
+  margin-top: 50px;
+}
+
+.cardIcon {
+  transform: scale(1.5);
+  margin-top: 35%;
+}
+
+.cardClose {
+  transform: scale(1.4);
+  margin: 5px;
+  cursor: pointer;
+  color: rgb(236, 101, 101);
+}
+
+.vl {
+  border-left: 1px solid rgba(46, 91, 150, 0.315);
+  height: 20%;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 60%;
+}
+
+.flex {
+  display: flex;
+}
+
+
+.small-text {
+  font-size: .8em;
+}

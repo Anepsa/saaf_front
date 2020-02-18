@@ -1,0 +1,419 @@
+=============General================
+Agregar Redux 
+Login Form // Agregar Axios hacer post 
+Hacer Paginación e Items per page 
+
+*****Layout*****
+Fix Filter Bootstrap  Fields  in Main Panel 
+
+
+*****React Router *****
+Redirect with Router if User Not Authenticated 
+Dynamic Routes  
+  -For companies 
+  -For Enterprise
+  -Main Static Routes 
+  -Sidebar dinamyc links react
+
+Investigate: <Switch> <Redirect>, Match , History 
+  
+Write down PseudoCode for How Routes would look 
+
+
+Dynamic Routing 
+
+Create Link and use ES6 String concatenation with backticks to take you to Item ID route 
+
+
+
+****Redux*****
+Split into Folders 
+Split Reducers and Use CombineReducers 
+Action Creators and ASYNC code 
+
+
+
+
+*****Axios*****
+
+*****Webpack*****
+Add Webpack relative paths
+
+
+
+==================================================
+          Authetication in React 
+ ==================================================
+         
+
+
+         Usar local storage para Roles 0' comparar si son iguales montarlo
+
+
+
+
+
+=============General Scructure ================
+React router 
+Split routes out of App.js 
+
+Redux 
+Estructura general componentes 
+CSS Modules 
+SASS 
+Why do we need PropTypes 
+Learn props.children 
+
+
+===============DRY CODE========================
+Higher order Comps or Funcs for Mapping Table fields
+Props. children para envolver con un container de PANEL al contenido 
+
+CompanyCard 
+Reusable Search Panels 
+Reusable Tables 
+
+AUX function 
+...rest
+<SubCompanyCards /> and CompanyCards are the same , pass items to be mapped through props
+
+
+
+  ***HOCS***
+  Component that returns another component
+  Agregar funcionalidad de Filtros A través de HOC's o Funciones Auxiliares
+
+  Always Present in Views 
+    Header of panel
+    Table Filters 
+    Table Rows and Data
+
+    
+
+
+  HOC's for Methods 
+  
+  HOC's for Styling and layout
+  HOC's to populate tables (optional)
+
+  HOC WithFilterBar 
+
+  HOC WithApiCall
+  HOC For views and different panels they have 
+
+  HOC For Filter Forms 
+
+
+  
+Separate Table Body and Table Headers 
+
+================Study===================
+map(), sort(), filter()
+this.context 
+HOCS 
+HOFs 
+
+Browser History
+
+================OOP===================
+Create Panels Automatically 
+
+================Investigate===================
+
+SAAF 
+ Auth.login  Located in Routes SAAF 
+ <Layout> Wrapper located in Routes SAAF 
+
+=================Aesthetics===================
+OFF canvas for sidebar 
+Fix Main Panel Width 
+Animate.css
+
+
+==============React Router Learning===========
+Wrap App Component with BrowserRouter a.k.a Router 
+Add Routes 
+Use {Link} to navigate to your Routes 
+...rest 
+
+
+=================Functions===================
+Multiple Filter Terms
+  -Cuentas, 
+  -Centro de Costos
+  -Estatus
+
+
+Single Filter Terms 
+  -Desactivados 
+
+
+Order (Sort) Alphabetically ej. Table Headers 
+
+
+
+
+
+==============11 Diciembre 2019===============
+
+HOC para popular campos de listas dinamicamente 
+Off Canvas Arreglar CSS para Panel Principal 
+React Router Rutas dinamicas
+
+
+Continuar Maquetado 
+Envolver en Layout 
+
+
+Separar Filtros en Componentes 
+
+Separar App Completa en mini componentes funcionales 
+Redux Login Actions and Reducers 
+
+Documentar Código 
+
+props.children para añadir Layout a children 
+
+Nota : Tratar de Crear layout para panel , todos usan barra de filtros y tablas 
+
+
+==============12 Diciembre 2019===============
+Hacer paginas principales  
+
+
+Panel de Control 
+Configuracion 
+
+  -INPC
+  -Tipo de cambio
+  -Roles
+  -Usuarios
+
+
+Fix Sidebar Links
+
+
+Create Edit Routes 
+
+
+
+
+-Add Webpack Relative Paths or use auto Imports 
+-Redirect to Login Route if not Logged In 
+
+
+
+
+
+Split Table headers and Table Rows into separate componentes
+Add relative imports Webpack 
+Add Dynamic Routes 
+
+
+
+
+
+
+
+
+==================17/Diciembre/2019================
+
+React Router Match y Rutas Dinámicas
+
+First Login with Backend
+  Axios Headers 
+  Login Data or Token Stored in Global REDUX State
+  https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/8244674#content
+
+  auth start 
+  auth success
+  auth fail 
+  
+
+
+  User context (axios)
+
+
+Login Options Data format 
+
+
+Nested state with Property userData 
+Separate Redux payload with 
+
+
+
+
+
+======================19/12/2019======================
+
+Store UserData Redux Global Store 
+Use local storage instead of redux global store state 
+
+
+
+WorkFlow 
+  Get Data Token from Login
+    0 : empresa
+
+    Map empresas  
+
+
+
+  U
+
+
+
+
+
+
+
+==================20/Diciembre/2019================
+
+
+
+Funcion para Verificar si token es igual JWT https://www.npmjs.com/package/jsonwebtoken 
+
+isLoggedIn
+isTokenEqual
+
+Dynamic routing Router / Bloqueo Rutas protegidas 
+Rutas privadas / Protegidas 
+
+
+***Roles***
+
+            "nombre": "anepsa sa de cv",
+
+            
+     "_id": "5df71b8ebd8d8917e67ff6f2",
+            "nombre": "anepsa sa de cv",
+            "nombre_corto": "anepsa",
+            "fecha": "2019-12-20T00:35:29.263Z",
+            "__v": 0
+
+
+Hacer Peticiones de Axios GET PUT DELETE etc. 
+
+
+
+
+
+==================23/Diciembre/2019================
+
+Estructura de CompanyCards DRY 
+
+  -URL address for API Call Dry
+  -Estructura del URL de react Router 
+  -Layout
+
+
+
+  Use Router {Match } to pass props to router Links, 
+
+
+  CompanyCard 
+
+
+==================30/Diciembre/2019================
+CRUD companies y empresas 
+API Call reuse W/Redux or WO/Redux 
+
+
+==================2/JAN/2019================
+
+make company cards props.chidlren only 
+
+
+
+fix routes for params id 
+<CompanyCard addButtonLink = blabla />
+
+
+
+
+
+==========Roles=========
+map values to tables from dictionaries 
+
+push object.key if active to permissions state array 
+
+
+
+
+join all arrays 
+
+
+if exists in redux then display dashboard list object 
+dynamic dashboard 
+
+
+create helper api function or HOC 
+helper function for creating and mapping forms in every view component
+
+
+
+Turn onApiCall Data into an object and pass as single funtion argument 
+also pass api data to external file 
+
+hoc for text handling all must have 
+
+tabledatamapper function for later 
+
+
+
+
+context api - instead of redux 
+
+container - view // design pattern apply 
+
+Create hoc for:
+  CRUD PANEL
+  VIEW / TABLE PANELS
+
+INPC Style tableDataMapper: 
+
+
+
+
+use keys to identify months in inpc 
+
+
+Delete 
+Redirect 
+Input value fix 
+Deactivate 
+
+==================Abstraction 21/01/2020=================
+
+General Containers 
+Search Functions 
+
+All ViewPanelContainer Containers must be HOCS
+View panel Dumb Component 
+
+
+
+View Panel HOC has:
+  -Search 
+  -Add Button 
+  -API Fetch
+  -Table 
+  -Pagination 
+  -Items Per Page 
+
+Filter Panel HOC has: 
+
+  
+
+  Learning Best practices 
+
+
+{...props}
+{...rest}
+render props 
+hoc 
+context api 
+spread operators 
+oop  
+
+  to={createRoute(company.id, subcompany.id, "reports/depreciation")}

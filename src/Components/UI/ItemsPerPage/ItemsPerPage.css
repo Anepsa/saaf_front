@@ -1,0 +1,8 @@
+.span-text {
+    margin: 5px
+}
+
+.itemsPerPage{
+    display: flex;
+    /* margin-left: 60px; */
+}

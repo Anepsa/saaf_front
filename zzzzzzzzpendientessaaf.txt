@@ -1,0 +1,81 @@
+
+
+Panel de Tablas (Vistas) 
+
+General 
+    Búsqueda Implementación con Render Props 
+
+
+Compañías   
+**Comments**
+Panel y Funciones ya existen , Se está cambiando de patron de Componentes de alto orden y patrón Render-Props para Reusabilidad de funciones y Código 
+
+
+    View        = OK
+    Deactivate  = In Progress
+    Create      = In Progress 
+    Edit        = In Progress
+    Delete      = OK 
+
+    
+Empresas 
+    View        = OK
+    Deactivate  = In Progress
+    Create      = In Progress 
+    Edit        = In Progress
+    Delete      = OK 
+
+
+
+=====================Panel de Control=======================
+
+Usuarios 
+    **ViewPanel** 
+        View        = OK            -- Requiere Ajuste / Verificación en API
+        Tables      = OK            -- Requiere Ajuste / Verificación en API
+        Deactivate  = In Progress   -- Requiere Ajuste / Verificación en API
+        Search      = In Progesss   -- Cambiar a patrón RenderProps 
+        Paginación  = None          -- Sólo Maquetado
+
+    **CRUD Panel** 
+        Create      = In Progress -- Requiere Ajuste / Verificación en API
+        Edit        = In Progress -- Requiere Ajuste / Verificación en API
+    
+Tipo de Cambio  
+    **ViewPanel** 
+        View        = OK            -- Requiere Ajuste / Verificación en API
+        Tables      = OK            -- Requiere Ajuste / Verificación en API
+        Deactivate  = In Progress   -- Requiere Ajuste / Verificación en API
+        Search      = In Progesss   -- Cambiar a patrón RenderProps 
+        Paginación  = None          -- Sólo Maquetado
+
+    **CRUD Panel** 
+        Create      = In Progress -- Requiere Ajuste / Verificación en API
+        Edit        = In Progress -- Requiere Ajuste / Verificación en API
+
+INPC  
+    **ViewPanel** 
+        View        = OK            -- Requiere Ajuste / Verificación en API
+        Tables      = OK            -- Requiere Ajuste / Verificación en API
+        Deactivate  = In Progress   -- Requiere Ajuste / Verificación en API
+        Search      = In Progesss   -- Cambiar a patrón RenderProps 
+        Paginación  = None          -- Sólo Maquetado
+
+    **CRUD Panel** 
+        Create      = In Progress -- Requiere Ajuste / Verificación en API
+        Edit        = In Progress -- Requiere Ajuste / Verificación en API
+
+
+
+Roles
+     **ViewPanel** 
+        View        = OK            -- Requiere Ajuste / Verificación en API
+        Tables      = OK            -- Requiere Ajuste / Verificación en API
+        Search      = In Progesss   -- Cambiar a patrón RenderProps 
+        Paginación  = None          -- Sólo Maquetado
+
+
+    **CRUD Panel** 
+        View        = 
+        Create      = None 
+        Edit        = None

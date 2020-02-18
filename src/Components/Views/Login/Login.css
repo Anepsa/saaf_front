@@ -1,0 +1,29 @@
+.loginBanner {
+    background-image: url("../../../assets//img/saaflanding.jpg");
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position-x: 90%;
+
+    z-index: -1;
+}
+
+
+.loginForm {
+  
+
+    margin: 30vh 10vh;
+
+}
+
+@media all and (max-width: 768px) {
+
+
+    .loginBanner{
+        display: none;
+    }
+  }
+

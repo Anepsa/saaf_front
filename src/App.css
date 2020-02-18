@@ -1,0 +1,223 @@
+body {
+  background-color:#e9ecf3;
+  overflow-x: hidden;
+}
+#loading-spinner {
+  transform: scale(3);
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(182, 182, 182);
+  border-radius: 2px;
+  transition: all .2s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.App {
+  /* background-color:black; */
+  height: 100vh;
+  font-family: "Hind Siliguri", sans-serif;
+  transition: all 0.2s;
+  margin-top: 50px;
+  margin-left: 200px;
+}
+
+.bgWhite {
+  background-color: white;
+}
+
+.bgGreen {
+  background-color: lightgreen;
+}
+
+li,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0 !important;
+}
+
+a {
+  color: inherit !important;
+}
+
+.shadow {
+  box-shadow: 0px 0px 1px 1px rgba(224, 224, 224, 0.664);
+}
+
+.mainPanel {
+  margin: 63px 10px;
+  border: 1px solid rgba(128, 128, 128, 0.055);
+  /* min-height: 80vh; */
+  border-radius: 5px;
+  background: white;
+  /* height: 100vh; */
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+
+.rst__rowTitle{
+  /* display: none; */
+}
+
+
+/* Buttons  */
+
+
+
+
+
+.btn-secondary {
+  border-radius: 0;
+}
+
+.float-right {
+  float: right;
+}
+
+.active {
+  background: #32c5d257;
+}
+.danger {
+  background:red;
+}
+
+.brandLogo {
+  max-height: 35px;
+}
+
+
+
+
+
+
+
+
+
+.formLabel {
+  margin-top: 8px;
+  margin-bottom: 1px;
+  font-size: 0.7em;
+}
+
+/* Panel  */
+
+.panelContainer {
+  padding: 2%;
+}
+.panelHeader {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+
+
+
+/* Inputs  */
+
+.smallInput {
+  max-width: 60px;
+}
+
+
+.topNavigation {
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+
+
+.treeButton {
+  /* display: flex;  */
+  /* justify-content: "space-around"; */
+  transform: scale(1.4);
+  float: right;
+ /* margin-right: 0 ; */
+  /* top: 0% ; */
+}
+
+
+
+.searchForm {
+  display: flex;
+}
+
+
+
+
+.searchIcon {
+  margin: 10px
+}
+
+
+.darkIcon {
+  /* background-color : darkblue */
+}
+
+.tableHeaderIcon {
+  margin-left: 10px;
+  margin-top: 2px;
+  float: right;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.th {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#captura {
+  background-image: url("./ValesDeResguardo.png");
+  height: 100vh;
+  
+  background-size: contain;
+  background-repeat: no-repeat;
+}
