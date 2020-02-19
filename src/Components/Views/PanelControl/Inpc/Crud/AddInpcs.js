@@ -15,6 +15,7 @@ export default function AddCompany(props) {
 		<AddFormBuilder
 			postPath={postPath}
 			field="company"
+			stateField="meses"
 			render={(properties) => {
 				if (properties.data.loading) return <img id="loading-spinner" src="/loading.svg" alt="" />;
 				return (

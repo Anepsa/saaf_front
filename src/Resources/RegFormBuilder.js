@@ -25,10 +25,6 @@ class FormBuilder extends Component {
 				}
 			})
 			.then((res) => {
-				// console.log("************************************************");
-				// console.log("res.data");
-				// console.log(res.data);
-				// console.log("************************************************");
 				this.setState({ payload: res.data[this.props.field] });
 				this.setState({ loading: false });
 			})
@@ -79,22 +75,17 @@ class FormBuilder extends Component {
 		}else{
 			estado = true;
 		}
-		data["estado"] = estado; //Assigns the Specific Key's value = to the input's value
+		data["estado"] = estado;
 		this.setState({ data: data }); //Sets State to New User Data
 		console.log(this.state.data);
 	};
 	
 	handleInputRender = (e) => {
 		this.setState({ data: e }); //Sets State to New User Data
-
 		//console.log(this.state.data);
 	};
 
 	render() {
-		// console.log("************************************************");
-		// console.log("this.state.payload");
-		// console.log(this.state.payload);
-		// console.log("************************************************");
 		return this.props.render({
 			data: this.state,
 			apiPut: this.apiPut,
