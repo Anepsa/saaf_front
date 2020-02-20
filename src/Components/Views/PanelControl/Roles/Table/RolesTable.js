@@ -12,8 +12,8 @@ export default class OuterDynamicTable extends Component {
 			return <th key={i}>{header.name}</th>;
 		});
 		const generateRow = (item, index, tHeaders) => {
-			console.log(item.estado);
-			console.log(item[dataSelector]);
+			// console.log(item.estado);
+			// console.log(item[dataSelector]);
 			const { _id, estado, nombre } = item;
 			const id = _id;
 			// const { estado } = item[dataSelector]; // Comment #A Causes Crash if data not structured

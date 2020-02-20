@@ -22,7 +22,9 @@ class PutFormBuilder extends Component {
 			octubre: 2,
 			noviembre: 2,
 			diciembre: 2
-		}
+		},
+		permisos: []
+			// "companies_edit", "users_get", "users_add", "users_update", "users_toggle", "roles_get", "roles_add", "roles_update"
 	};
 
 	headersMeses = [
@@ -40,13 +42,25 @@ class PutFormBuilder extends Component {
 		{ name: 'diciembre', selector: '12' }
 	];
 
+	permisos = [
+		"companies_edit",
+		"users_get",
+		"users_add",
+		"users_update",
+		"users_toggle",
+		"roles_get",
+		"roles_add",
+		"roles_update"
+	];
+
+
 	componentDidMount() {
 		this.setState({ loading: true });
 		this.apiGet();
 	}
 
 	apiPut = () => {
-		console.log('apiPut - Update - INPC');
+		console.log('apiPut - Update - INPC - Roles');
 		axios({
 			method: 'put',
 			url: this.props.editPath,
@@ -63,44 +77,94 @@ class PutFormBuilder extends Component {
 		});
 	};
 
+
 	apiGet = () => {
 		axios
 			.get(this.props.path)
 			.then((res) => {
-				this.setState({ data: res.data.inpc });
+				console.log(res)
+				this.setState({ data: res.data });
 				this.setState({ payload: res.data[this.props.field] });
 				this.setState({ loading: false });
-				this.iniciarValores();
+				this.iniciarValores(this.props.field);
+				console.log(this.state.payload[this.props.field])
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
 
-	iniciarValores(){
+	iniciarValores(field){
+		if(field === "inpc"){
+			this.valoresInicialesINPC();
+		}else if(field === "permisos"){
+			//this.valoresInicialesPermisos();
+		}
+	}
+
+	valoresInicialesINPC(){
 		let meses = {};
 		for (let i = 1; i <= 12; i++) {
-			const valor = this.state.data.meses[i];
+			const valor = this.state.payload.meses[i];
 			meses[this.headersMeses[i-1].name] = valor;
 		}
 		
-		const data =  this.state.data ;
-		const firstData = data;
-		firstData.year = this.state.data.year;
-		firstData.estado = this.state.data.estado;
+		const payload =  this.state.payload;
+		const firstData = payload;
+		firstData.year = this.state.payload.year;
+		firstData.estado = this.state.payload.estado;
 
 		this.setState({ data: firstData });
 		this.setState({ meses: meses });
 	}
 
+	valoresInicialesPermisos(){
+		let perm = [];
+		for (let i = 1; i <= 12; i++) {
+			const valor = this.state.payload.perm[i];
+			perm[this.headersMeses[i-1].name] = valor;
+		}
+		
+		const payload =  this.state.payload;
+		const firstData = payload;
+		firstData.year = this.state.payload.year;
+		firstData.estado = this.state.payload.estado;
+
+		this.setState({ data: firstData });
+		this.setState({ permisos: perm });
+	}
+
+	analizarPermisos(e) {//Agrega o retira un permiso.
+		const { name, checked } = e.target;
+		let newData = this.state.permisos;
+		if (checked) {
+			newData.push(name);
+		} else {
+			newData = this.removerDelArreglo(name, newData);
+		}
+		console.log(newData);
+		this.setState({ permisos: newData });
+	}
+
+	/*
+	if(stateKey == "permisos"){
+			this.analizarPermisos(e);
+		}
+	*/
+
 	handleNested = (e, stateKey) => {
 		// console.log('Handling NESTED Input');
-		const newPayload = {...this.state.meses};
+		console.log(stateKey);
 		const { name, value } = e.target;
-		const newData = { ...newPayload };
-		newData[this.headersMeses[name-1].name] = value;
-		this.setState({ meses: newData });
-		console.log(this.state.meses);
+		if(stateKey === "meses"){
+			const newPayload = {...this.state.meses};
+			const newData = { ...newPayload };
+			newData[this.headersMeses[name-1].name] = value;
+			this.setState({ meses: newData });
+			console.log(this.state.meses);
+		}else if(stateKey === "datos"){
+			this.handleInputChange(e);//Guardar normal el campo
+		}
 	};
 	
 	handleInputChange = (e) => {

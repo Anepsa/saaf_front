@@ -12,7 +12,6 @@ class NewPanel extends Component{
 	constructor(props){
 		super(props);
 		this.name = props.name;
-		console.log("props")
 		console.log(props);
 	}
 	
@@ -30,12 +29,11 @@ class NewPanel extends Component{
 	mapNestedForms = (forms) => {
 		const mappedForms = forms.map((form) => {
 			const { name, type, stateKey } = form;
-			console.log(this.props.data);
 			if(type == "checkbox"){
-				if(this.props.data.length != 0){ // Si no tiene data es por que es nuevo
+				if(!this.props.ocultarCheckbox){ // si se ocultan los checkbox especificar en la vista
 					return(
 						<Col md={1}>
-							<Form.Group >
+							<Form.Group>
 								<Form.Label>{form.name}</Form.Label>
 								<Checkbox 
 									onChange={(e) => {
@@ -56,6 +54,7 @@ class NewPanel extends Component{
 					);
 				}
 			}else{
+				console.log(this.props.data)
 				return (
 					
 						<TextForm

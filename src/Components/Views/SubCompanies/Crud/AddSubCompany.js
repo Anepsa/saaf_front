@@ -26,6 +26,7 @@ export default function AddSubCompany(props) {
 							handleCheckboxChange={properties.handleCheckboxChange}
 							handleInputRender={properties.handleInputRender}
 							forms={localData.nestedForms}
+							ocultarCheckbox={true}
 							name="Agregar Empresa"
 							headers={localData.headers}
 							data={properties.data.payload}

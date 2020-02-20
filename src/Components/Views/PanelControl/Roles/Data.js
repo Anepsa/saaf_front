@@ -19,27 +19,6 @@ export const nestedForms = [
 		longName: 'Nombre',
 		stateKey: 'datos',
 		isNested: true // Need to optimize in WithForms
-	},
-	{
-		name: 'apellido',
-		type: 'text',
-		longName: 'Apellido',
-		stateKey: 'datos',
-		isNested: true // Need to optimize in WithForms
-	},
-	{
-		name: 'email',
-		type: 'email',
-		longName: 'Apellido',
-		stateKey: 'datos',
-		isNested: true // Need to optimize in WithForms
-	},
-	{
-		name: 'password',
-		type: 'password',
-		longName: 'Apellido',
-		stateKey: 'datos',
-		isNested: true // Need to optimize in WithForms
 	}
 ];
 
