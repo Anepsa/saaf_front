@@ -20,15 +20,16 @@ export default class OuterDynamicTable extends Component {
 			const displayStatus = estado ? <div className="active">Sí</div> : <div className="danger">No</div>;
 			return (
 				<Consumer>
-					{(context) => (
+					{(context) => {
+						return(
 						<tr>
 							<td>{nombre} </td>
 							<td>{displayStatus}</td>
 							<td>
 								<EditButton link={`${this.props.editButtonLink}/${id}`} />{' '}
 							</td>
-						</tr>
-					)}
+						</tr>)
+					}}
 				</Consumer>
 			);
 		};

@@ -17,6 +17,7 @@ class FormBuilder extends Component {
 
 	apiGet = () => {
 		console.log("RegFormBuilder");
+		console.log(this.props.path)
 		axios
 			.get(this.props.path, {
 				headers: {

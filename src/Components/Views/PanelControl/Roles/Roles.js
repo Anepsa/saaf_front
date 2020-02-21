@@ -9,6 +9,8 @@ import OuterDynamicTable from '../../../UI/Table/DynamicTable/OuterDynamicTable'
 export default function Roles(props) {
 	const { idCompany } = props.match.params;
 	const path = `https://murmuring-journey-73788.herokuapp.com/permisos/get/${idCompany}?desde=0&limite=10&orderby_name=&orderby_apellido=&orderby_email=&search`;
+	console.log("Roles props")
+	console.log(props)
 	return (
 		<ApiCaller
 			path={path}

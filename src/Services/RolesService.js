@@ -9,16 +9,13 @@ class RolesService extends Component {
         nestedData: {},
         nombre: "error",
         permisos: [],
-        companies_edit:true
+        companies_edit:true,
+        forms:[],
+        company_permisos:[]
     };
 
     componentDidMount() {
-        if(this.props.esEdit){
-            this.setState({ loading: true });
-            this.apiGet();
-        }else{
-            console.log("No es edit, Es crear, o Eliminar");
-        }
+        this.apiGetCompany();
     }
 
     apiPut = () => { // Editar
@@ -47,16 +44,35 @@ class RolesService extends Component {
     }
 
     apiGet = () => { // Lo manda a llamar el constructor
-        console.log("Get en Roles Service")
         axios
-            .get(this.props.path)
-            .then((res) => {
+        .get(this.props.path)
+        .then((res) => {
+                console.log("Get en Roles Service")
                 //console.log(res)
                 this.setState({ data: res.data });
                 this.iniciarValores(res.data);
                 //this.setState({ payload: res.data[this.props.field] });
                 this.setState({ loading: false });
                 //console.log(this.state.payload[this.props.field])
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    apiGetCompany = () => { // Para obtener los roles a usar.
+        console.log(this.props.getCompanyPath)
+        axios
+            .get(this.props.getCompanyPath, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: sessionStorage.sessionToken
+                }})
+            .then((res) => {
+                console.log("Get Company en Roles Service")
+                this.setState({ company_permisos: res.data.company.role_list });
+                this.setState({ loading: false });
+                this.getForms();
             })
             .catch((err) => {
                 console.log(err);
@@ -80,6 +96,31 @@ class RolesService extends Component {
                 console.log(err);
             });
     };
+
+    getForms(){ // Obtiene los Permisos a mostrar Por company
+        const forms = [];
+        const company_permisos = this.state.company_permisos;
+
+        this.props.forms.forEach(form => { forms.push(form) }); // Agrega los forms por defecto.
+
+        company_permisos.forEach( permiso => {
+            const form = {};
+            form.name = permiso;
+            form.type = 'checkbox';
+            form.longName = 'Nombre';
+            form.stateKey = 'permisos';
+            form.isNested = true // Need to optimize in WithForms;
+            forms.push(form);
+        });
+        this.setState({forms: forms});
+
+        if (this.props.esEdit) {
+            this.setState({ loading: true });
+            this.apiGet();
+        } else {
+            console.log("No es Edit, por lo tanto no se le inicializan los campos");
+        }
+    }
 
     iniciarValores(data) {
        const dataInicial = data[this.props.field];
@@ -148,9 +189,69 @@ class RolesService extends Component {
             apiSubmit: this.apiPost,
             apiEdit: this.apiPut,
             apiPut: this.apiPut,
-            apiDelete: this.apiDelete
+            apiDelete: this.apiDelete,
+            forms: this.state.forms,
         });
     }
+
+    checkBox = [
+        {
+            name: 'companies_edit',
+            type: 'checkbox',
+            longName: 'Nombre',
+            stateKey: 'permisos',
+            isNested: true // Need to optimize in WithForms
+        },
+        {
+            name: 'users_get',
+            type: 'checkbox',
+            longName: 'Nombre',
+            stateKey: 'permisos',
+            isNested: true // Need to optimize in WithForms
+        },
+        {
+            name: 'users_add',
+            type: 'checkbox',
+            longName: 'Nombre',
+            stateKey: 'permisos',
+            isNested: true // Need to optimize in WithForms
+        },
+        {
+            name: 'users_update',
+            type: 'checkbox',
+            longName: 'Nombre',
+            stateKey: 'permisos',
+            isNested: true // Need to optimize in WithForms
+        },
+        {
+            name: 'users_toggle',
+            type: 'checkbox',
+            longName: 'Nombre',
+            stateKey: 'permisos',
+            isNested: true // Need to optimize in WithForms
+        },
+        {
+            name: 'roles_get',
+            type: 'checkbox',
+            longName: 'Nombre',
+            stateKey: 'permisos',
+            isNested: true // Need to optimize in WithForms
+        },
+        {
+            name: 'roles_add',
+            type: 'checkbox',
+            longName: 'Nombre',
+            stateKey: 'permisos',
+            isNested: true // Need to optimize in WithForms
+        },
+        {
+            name: 'roles_update',
+            type: 'checkbox',
+            longName: 'Nombre',
+            stateKey: 'permisos',
+            isNested: true // Need to optimize in WithForms
+        }
+    ];
 }
 
 export default withRouter(RolesService);
