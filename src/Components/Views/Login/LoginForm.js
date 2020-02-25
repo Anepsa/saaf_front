@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions";
 import axios from "axios";
 import { withRouter } from "react-router";
+import { END_POINT } from '../../../config/endpoints.js';
 
 function LoginForm({...props}) {
   const [email, setEmail] = useState("");
@@ -35,10 +36,9 @@ function LoginForm({...props}) {
 
   }
   const logIn = () => {
-  // TODO posible cambio en Login
     axios({
       method: "post",
-      url: "https://murmuring-journey-73788.herokuapp.com/login",
+      url: END_POINT.LOGIN,
       data: {
         email: email,
         password: password

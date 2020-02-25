@@ -3,12 +3,13 @@ import CardBuilder from '../../../Resources/CardBuilder';
 import CardPanel from '../../UI/Panel/CardPanel';
 // import * as localData from "./Data";
 import { Provider } from '../../../Context/Context';
+import { END_POINT } from '../../../config/endpoints.js';
 
 export default function SubCompanies(props) {
 	const { idCompany, idSubCompany } = props.match.params;
-	const path = `https://murmuring-journey-73788.herokuapp.com/empresa/${idCompany}`;
-	const deactLink = `https://murmuring-journey-73788.herokuapp.com/empresa/${idCompany}`;
-	const deleteLink = `https://murmuring-journey-73788.herokuapp.com/empresa/${idCompany}`;
+	const path = END_POINT.SUB_COMPANY + idCompany;
+	const deactLink = END_POINT.SUB_COMPANY + idCompany;
+	const deleteLink = END_POINT.SUB_COMPANY + idCompany;
 	const addButtonLink = `/company/post`;
 	// const editPath = `https://murmuring-journey-73788.herokuapp.com/camposempleados/put/${idSubCompany}`;
 	// Need To Create generateUrl( ) function to avoid code duplication

@@ -3,27 +3,18 @@ import NewPanel from '../../../UI/Panel/NewPanel';
 import * as localData from '../Data';
 import { Provider } from '../../../../Context/Context';
 import RegFormBuilder from '../../../../Resources/RegFormBuilder';
+import { END_POINT } from '../../../../config/endpoints.js';
 
 export default function EditCompany(props) {
-
-	// console.log("************************************************");
-	// console.log("localData.nestedForms");
-	// console.log(localData.nestedForms);
-	// console.log("************************************************");
-	
 	const { idCompany, idSubCompany, idCampoEmpleado } = props.match.params;
-	const path = `https://murmuring-journey-73788.herokuapp.com/company/${idCompany}`;
-	const editPath = `https://murmuring-journey-73788.herokuapp.com/company/${idCompany}`;
+	const path = END_POINT.COMPANY + idCompany;
+	const editPath = END_POINT.COMPANY + idCompany;
 	return (
 		<RegFormBuilder
 		path={path}
 		editPath={editPath}
 		field="company"
 		render={(properties) => {
-			// console.log("************************************************");
-			// console.log("properties.data.payload");
-			// console.log(properties.data.payload);
-			// console.log("************************************************");
 				if (properties.data.loading) return <img id="loading-spinner" src="/loading.svg" alt="" />;
 				return (
 					<Provider

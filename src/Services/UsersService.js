@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
-class RolesService extends Component {
+class UsersService extends Component {
     state = {
         loading: false,
         payload: [],
@@ -9,13 +9,13 @@ class RolesService extends Component {
         nestedData: {},
         nombre: "error",
         permisos: [],
-        companies_edit:true,
-        forms:[],
-        company_permisos:[]
+        companies_edit: true,
+        forms: [],
+        company_permisos: []
     };
 
     componentDidMount() {
-        this.apiGetCompany();
+        //this.apiGetCompany(); // Cambiar por get Roles.
     }
 
     apiPut = () => { // Editar
@@ -36,7 +36,7 @@ class RolesService extends Component {
             .catch((err) => {
                 console.log(err);
             });
-        
+
     };
 
     apiDelete = () => { // Eliminar
@@ -45,8 +45,8 @@ class RolesService extends Component {
 
     apiGet = () => { // Lo manda a llamar el constructor
         axios
-        .get(this.props.path)
-        .then((res) => {
+            .get(this.props.path)
+            .then((res) => {
                 console.log("Get en Roles Service")
                 //console.log(res)
                 this.setState({ data: res.data });
@@ -78,9 +78,9 @@ class RolesService extends Component {
                 console.log(err);
             });
     };
-    
+
     apiPost = () => { // Nuevo
-        console.log("Nuevo en Roles Services")
+        console.log("Nuevo en User Services")
         axios({
             method: 'post',
             url: this.props.postPath,
@@ -97,13 +97,13 @@ class RolesService extends Component {
             });
     };
 
-    getForms(){ // Obtiene los Permisos a mostrar Por company
+    getForms() { // Obtiene los Permisos a mostrar Por company
         const forms = [];
         const company_permisos = this.state.company_permisos;
 
         this.props.forms.forEach(form => { forms.push(form) }); // Agrega los forms por defecto.
 
-        company_permisos.forEach( permiso => {
+        company_permisos.forEach(permiso => {
             const form = {};
             form.name = permiso;
             form.type = 'checkbox';
@@ -112,7 +112,7 @@ class RolesService extends Component {
             form.isNested = true // Need to optimize in WithForms;
             forms.push(form);
         });
-        this.setState({forms: forms});
+        this.setState({ forms: forms });
 
         if (this.props.esEdit) {
             this.setState({ loading: true });
@@ -123,9 +123,9 @@ class RolesService extends Component {
     }
 
     iniciarValores(data) {
-       const dataInicial = data[this.props.field];
-       dataInicial.permisos.forEach(permiso => {
-           dataInicial[permiso] = true;
+        const dataInicial = data[this.props.field];
+        dataInicial.permisos.forEach(permiso => {
+            dataInicial[permiso] = true;
         });
         this.setState({ payload: dataInicial }); // Para el modulo de mostrar checkbox
         this.setState({ permisos: data.permisos.permisos }); // Para iniciar los valores a la hora de usar apiPut
@@ -167,7 +167,19 @@ class RolesService extends Component {
         const newData = data;
         const { name, value } = e.target;
         newData[name] = value;
-        this.setState({ data: newData });
+        // this.setState({ data:{data: newData} });
+        this.setState({data:
+            {
+                "nombre": "Prueba",
+                "apellido": "Prueba",
+                "email": "prueba_roberto1@hotmail.com",
+                "password": "1234",
+                //"passwordDate": "2019-12-23T18:22:52.955+00:00",
+                "companies": {
+                    "permisos": "5e4f2d3b1f5b41001794e875"
+                }
+            }}
+        );
         console.log(value);
     };
 
@@ -184,7 +196,7 @@ class RolesService extends Component {
         return this.props.render({
             data: this.state,
             handleNestedInputChange: this.handleNested,
-            handleInputChange: this.handleInputChange,
+            handleInputChange: this.handleInputChange, // handleNestedInputChange
             handleCheckboxChange: this.handleCheckboxChange,
             apiSubmit: this.apiPost,
             apiEdit: this.apiPut,
@@ -195,4 +207,4 @@ class RolesService extends Component {
     }
 }
 
-export default withRouter(RolesService);
+export default withRouter(UsersService);

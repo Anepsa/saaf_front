@@ -3,11 +3,13 @@ import NewPanel from '../../../UI/Panel/NewPanel';
 import * as localData from '../Data';
 import { Provider } from '../../../../Context/Context';
 import Regular from '../../../../Resources/Add/Regular';
+import { END_POINT } from '../../../../config/endpoints.js';
 
 export default function AddCompany(props) {
 	const { idCompany, idSubCompany, idCampoEmpleado } = props.match.params;
-	const path = `https://murmuring-journey-73788.herokuapp.com/company/${idCompany}`;
-	const postPath = `https://murmuring-journey-73788.herokuapp.com/company`;
+	// TODO: Cambiar la url a la de config/endpoints.js
+	const path = END_POINT.COMPANY + idCompany;
+	const postPath = END_POINT.COMPANY;
 	return (
 		<Regular
 			path={path}

@@ -5,11 +5,12 @@ import { Provider } from '../../../../../Context/Context';
 import FormBuilder from '../../../../../Resources/FormBuilder';
 import PutFormBuilder from '../../../../../Resources/Put/PutFormBuilder';
 import ComplexPanel from '../../../../UI/Panel/ComplexPanel';
+import { END_POINT } from '../../../../../config/endpoints.js';
 
 export default function EditInpcs(props) {
 	const { idCompany, idSubCompany, idInpc } = props.match.params;
-	const path = `https://murmuring-journey-73788.herokuapp.com/inpc/get/${idCompany}/${idInpc}`;
-	const editPath = `https://murmuring-journey-73788.herokuapp.com/inpc/put/${idCompany}/${idInpc}`;
+	const path = END_POINT.GET_INPC + idCompany + "/" + idInpc;
+	const editPath = END_POINT.PUT_INPC + idCompany + "/" + idInpc;
 	return (
 		<PutFormBuilder
 			path={path}

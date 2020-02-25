@@ -7,6 +7,7 @@ class Nested extends Component {
 		payload: [],
 		formattedPayload: null
 	};
+	
 	apiPost = () => {
 		axios({
 			method: 'post',

@@ -4,12 +4,14 @@ import * as localData from '../Data';
 import { Provider } from '../../../../../Context/Context';
 // import Regular from '../../../../../Resources/Add/Regular';
 import Nested from '../../../../../Resources/Add/Nested';
+import UsersService from '../../.././../../Services/UsersService';
+import { END_POINT } from '../../../../../config/endpoints.js';
 
 export default function AddCompany(props) {
 	const { idCompany, idSubCompany, idCampoEmpleado } = props.match.params;
-	const postPath = `https://murmuring-journey-73788.herokuapp.com/usuarios/post/${idCompany}`;
+	const postPath = END_POINT.POST_USER + idCompany;
 	return (
-		<Nested
+		<UsersService // Antes Nested
 			postPath={postPath}
 			field="company"
 			render={(properties) => {

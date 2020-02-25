@@ -7,10 +7,12 @@ import Nested from '../../../../../Resources/Add/Nested';
 import FormBuilder from '../../../../../Resources/FormBuilder';
 import AddFormBuilder from '../../../../../Resources/Add/AddFormBuilder';
 import NewPanel from '../../../../UI/Panel/NewPanel';
+import { END_POINT } from '../../../../../config/endpoints.js';
 
 export default function AddCompany(props) {
 	const { idCompany, idSubCompany, idCampoEmpleado } = props.match.params;
-	const postPath = `https://murmuring-journey-73788.herokuapp.com/inpc/post/${idCompany}`;
+	//TODO: Corregir que se envian los meses en 1 y no con el valor escrito.
+	const postPath = END_POINT.POST_INPC + idCompany;
 	return (
 		<AddFormBuilder
 			postPath={postPath}

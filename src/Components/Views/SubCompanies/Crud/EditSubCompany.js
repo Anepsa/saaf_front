@@ -3,12 +3,13 @@ import NewPanel from '../../../UI/Panel/NewPanel';
 import * as localData from '../Data';
 import { Provider } from '../../../../Context/Context';
 import RegFormBuilder from '../../../../Resources/RegFormBuilder';
+import { END_POINT } from '../../../../config/endpoints.js';
 
 export default function EditSubCompany(props) {
 	const { idCompany, idSubCompany } = props.match.params;
 	// http://localhost:3000/empresa/:idCompany/:idEmpresa
-	const path = `https://murmuring-journey-73788.herokuapp.com/empresa/${idCompany}/${idSubCompany}`;
-	const editPath = `https://murmuring-journey-73788.herokuapp.com/empresa/${idCompany}/${idSubCompany}`;
+	const path = END_POINT.SUB_COMPANY + idCompany + "/" + idSubCompany;
+	const editPath = END_POINT.SUB_COMPANY + idCompany + "/" + idSubCompany;
 	return (
 		<RegFormBuilder
 			path={path}

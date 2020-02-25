@@ -3,10 +3,11 @@ import NewPanel from '../../../UI/Panel/NewPanel';
 import * as localData from '../Data';
 import { Provider } from '../../../../Context/Context';
 import Regular from '../../../../Resources/Add/Regular';
+import { END_POINT } from '../../../../config/endpoints.js';
 
 export default function AddSubCompany(props) {
 	const { idCompany } = props.match.params;
-	const postPath = `https://murmuring-journey-73788.herokuapp.com/empresa/${idCompany}`;
+	const postPath = END_POINT.SUB_COMPANY + idCompany;
 	return (
 		<Regular
 		postPath={postPath}

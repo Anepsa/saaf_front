@@ -7,12 +7,13 @@ import Nested from '../../../../../Resources/Add/Nested';
 import FormBuilder from '../../../../../Resources/FormBuilder';
 import RolesService from '../../../../../Services/RolesService';
 import NewPanel from '../../../../UI/Panel/NewPanel';
+import { END_POINT } from '../../../../../config/endpoints.js';
 
 export default function AddRoles(props) {
 	const { idCompany, idSubCompany, idCampoEmpleado } = props.match.params;
-	const postPath = `https://murmuring-journey-73788.herokuapp.com/permisos/post/${idCompany}`;
-	const getPermisosPath = `https://murmuring-journey-73788.herokuapp.com/permisos/post/${idCompany}`;
-	const getCompany = `https://murmuring-journey-73788.herokuapp.com/company/${idCompany}`;
+	const postPath = END_POINT.POST_ROLES + idCompany; // Para guardar el nuevo Rol
+	const getPermisosPath = END_POINT.POST_ROLES + idCompany;
+	const getCompany = END_POINT.COMPANY + idCompany; // Para saber que permisos mostrar
 	if(true){
 		return (
 			<RolesService

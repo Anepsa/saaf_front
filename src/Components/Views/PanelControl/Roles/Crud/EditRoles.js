@@ -5,14 +5,15 @@ import PutFormBuilder from '../../../../../Resources/Put/PutFormBuilder';
 import ComplexPanel from '../../../../UI/Panel/ComplexPanel';
 import NewPanel from '../../../../UI/Panel/NewPanel';
 import RolesService from '../../../../../Services/RolesService';
+import { END_POINT } from '../../../../../config/endpoints.js';
 
 export default function EditRoles(props) {
 	const { idCompany, idSubCompany, idRol } = props.match.params;
 	console.log("params");
 	console.log(props);
-	const path = `https://murmuring-journey-73788.herokuapp.com/permisos/get/${idCompany}/${idRol}`;
-	const editPath = `https://murmuring-journey-73788.herokuapp.com/permisos/put/${idCompany}/${idRol}`;
-	const getCompany = `https://murmuring-journey-73788.herokuapp.com/company/${idCompany}`;
+	const path = END_POINT.GET_ROLES + idCompany + "/" + idRol; // Para obtener que permisos tiene ese rol
+	const editPath = END_POINT.PUT_ROLES + idCompany + "/" + idRol; // funcion para editar el rol
+	const getCompany = END_POINT.COMPANY + idCompany; // Para saber que permisos mostrar
 	return (
 		<RolesService
 			forms={localData.nestedForms}

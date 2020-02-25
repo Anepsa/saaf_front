@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { AddButton } from '../Buttons/AddButton';
 import { Consumer } from '../../../Context/Context';
 import CompanyCard from '../Cards/CompanyCard';
+import { END_POINT } from '../../../config/endpoints.js';
 
 const CardPanel = (props) => {
 	const { name, data, deactFunc } = props;
@@ -12,7 +13,7 @@ const CardPanel = (props) => {
 		return (
 			<Col key={_id} md={6}>
 				<CompanyCard
-					url={`https://murmuring-journey-73788.herokuapp.com/company/${_id}`} // This URL is for Deletion only
+					url={END_POINT.COMPANY + _id} // This URL is for Deletion only
 					estado={estado}
 					key={_id}
 					id={_id}

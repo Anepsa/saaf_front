@@ -4,10 +4,11 @@ import ViewPanel from '../../../UI/Panel/ViewPanel';
 import * as localData from './Data';
 import { Provider } from '../../../../Context/Context';
 import OuterStatePanel from '../../../UI/Panel/OuterStatePanel';
+import { END_POINT } from '../../../../config/endpoints.js';
 
 export default function Inpcs(props) {
 	const { idCompany, idSubCompany, idInpc } = props.match.params;
-	const path = `https://murmuring-journey-73788.herokuapp.com/inpc/get/${idCompany}?desde=0&limite=10&orderby_name=&orderby_apellido=&orderby_email=&search`;
+	const path = END_POINT.GET_INPC + idCompany + "?desde=0&limite=10&orderby_name=&orderby_apellido=&orderby_email=&search";
 	// http://localhost:3000/inpc/get/${idCompany}?desde=0&limite=10&orderby_name=&orderby_apellido=&orderby_email=&search
 	return (
 		<ApiCaller
@@ -21,7 +22,7 @@ export default function Inpcs(props) {
 							apiPut: properties.apiPut,
 							addButtonLink: `/inpc/post/${idCompany}`, //***
 							editButtonLink: `/inpc/put/${idCompany}`, //***
-							deactLink: `https://murmuring-journey-73788.herokuapp.com/inpc/put/${idCompany}`,
+							deactLink: END_POINT.PUT_INPC + idCompany,
 							deactFunc: properties.deactFunc,
 							dataSelector: 'meses'
 						}}

@@ -1,12 +1,14 @@
 import React from 'react';
 import CardBuilder from '../../../Resources/CardBuilder';
 import CardPanel from '../../UI/Panel/CardPanel';
+import {END_POINT} from '../../../config/endpoints.js';
 // import * as localData from "./Data";
 import { Provider } from '../../../Context/Context';
 
 export default function Companies(props) {
 	// const { idCompany, idSubCompany } = props.match.params;
-	const path = `https://murmuring-journey-73788.herokuapp.com/company`;
+	//const path = `https://murmuring-journey-73788.herokuapp.com/company`;
+	const path = END_POINT.COMPANY;
 
 	return (
 		<CardBuilder
@@ -22,10 +24,10 @@ export default function Companies(props) {
 							apiPut: properties.apiPut,
 							addButtonLink: `/company/post`,
 							deactFunc: properties.deactFunc,
-							deactLink: `https://murmuring-journey-73788.herokuapp.com/company`,
+							deactLink: END_POINT.COMPANY,
 
 							deleteFunc: properties.deleteFunc,
-							deleteLink: `https://murmuring-journey-73788.herokuapp.com/company`,
+							deleteLink: END_POINT.COMPANY,
 
 							editLink: `/put/company`
 						}}
@@ -34,7 +36,7 @@ export default function Companies(props) {
 							name="Compañías"
 							data={properties.data.payload}
 							path="/put/company/:idCompany"
-							editLink={`https://murmuring-journey-73788.herokuapp.com/put/company}`}
+							editLink={`https://murmuring-journey-73788.herokuapp.com/put/company}`} // TODO: investigar para que se usa.
 						/>
 					</Provider>
 				);
